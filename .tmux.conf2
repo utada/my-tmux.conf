@@ -105,19 +105,31 @@ unbind BTab
 bind BTab select-pane -t:.-
 unbind F1
 unbind F2
-#bind-key -n F1 select-pane -L
-#bind-key -n F2 select-pane -R
-bind -n F9 select-pane -t:.-
-bind -n F10 select-pane -t:.+
+bind -n F1 select-pane -L
+bind -n F2 select-pane -R
+#unbind F9
+#unbind F10
+#bind -n F9 select-pane -L
+#bind -n F10 select-pane -R
+#bind -n C-F9 select-pane -t:.-
+#bind -n C-F10 select-pane -t:.+
 
 # " windowlist -b
 unbind '"'
 bind '"' choose-window
 
-# copy mode start F11-[
-# copy mode end   F11-]
+# copy mode start F11-y
+# copy mode end   F11-p
+setw -g mode-keys vi
+bind y copy-mode
 # vでマーク開始 (vi like)
 bind -t vi-copy v begin-selection
 # yでヤンク
 bind -t vi-copy y copy-selection
+bind -t vi-copy V rectangle-toggle
+bind p paste-buffer
 
+# buffer
+#bind Space choose-buffer
+
+#set-option -g pane-active-border-fg blue
