@@ -109,6 +109,8 @@ unbind F2
 #bind-key -n F2 select-pane -R
 bind -n F9 select-pane -t:.-
 bind -n F10 select-pane -t:.+
+bind-key -n C-] select-pane -t :.-
+bind-key -n C-[ select-pane -t :.+
 
 # " windowlist -b
 unbind '"'
