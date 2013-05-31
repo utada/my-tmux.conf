@@ -12,8 +12,10 @@
 # normal tmux key bindings. This is intended as an example not as to be used
 # as-is.
 
-# Set the prefix to F12.
+# Set the prefix to F11.
+unbind-key -a
 unbind C-b
+unbind F11
 set -g prefix F11
 bind F11 send-prefix
 
@@ -78,7 +80,7 @@ bind w list-windows
 
 # quit \
 unbind \
-bind \ confirm-before "kill-server"
+Bind \ confirm-before "kill-server"
 
 # kill K k
 unbind K
@@ -105,23 +107,17 @@ unbind BTab
 bind BTab select-pane -t:.-
 unbind F1
 unbind F2
-<<<<<<< HEAD
+
 #bind-key -n F1 select-pane -L
 #bind-key -n F2 select-pane -R
-bind -n F9 select-pane -t:.-
-bind -n F10 select-pane -t:.+
-bind-key -n C-] select-pane -t :.-
-bind-key -n C-[ select-pane -t :.+
-=======
-bind -n F1 select-pane -L
-bind -n F2 select-pane -R
+unbind Escape
 unbind F9
 unbind F10
-#bind -n F9 select-pane -L
-#bind -n F10 select-pane -R
-#bind -n C-F9 select-pane -t:.-
-#bind -n C-F10 select-pane -t:.+
->>>>>>> 78811411aa2965e0a9120ec8959f437a27fa6966
+
+#bind-key -n F9 select-pane -t:.-
+#bind-key -n F10 select-pane -t:.+
+bind -n C-H select-pane -t :.-
+bind -n C-l select-pane -t :.+
 
 # " windowlist -b
 unbind '"'
