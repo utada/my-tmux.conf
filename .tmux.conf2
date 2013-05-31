@@ -35,6 +35,7 @@ bind c new-window
 
 # detach
 unbind ^D
+unbind F6
 bind ^D detach
 #bind -n F6 detach
 
