@@ -13,7 +13,7 @@
 # as-is.
 
 # Set the prefix to F11.
-unbind-key -a
+#unbind-key -a
 unbind C-b
 unbind F11
 set -g prefix F11
