@@ -12,15 +12,11 @@
 # normal tmux key bindings. This is intended as an example not as to be used
 # as-is.
 
-# Set the prefix to F11.
-#unbind-key -a
+# Set the prefix to F12.
 unbind C-b
-unbind F11
-set -g prefix F11
-bind F11 send-prefix
-
-#unbind l
-bind L source ~/.tmux.conf
+set -g prefix F12
+#bind a send-prefix
+set -g default-shell $SHELL
 
 # Bind appropriate commands similar to screen.
 # lockscreen ^X x
@@ -37,9 +33,8 @@ bind c new-window
 
 # detach
 unbind ^D
-unbind F6
-bind ^D detach
-#bind -n F6 detach
+#bind ^D detach
+bind -n F6 detach
 
 # displays *
 unbind *
@@ -81,7 +76,7 @@ bind w list-windows
 
 # quit \
 unbind \
-Bind \ confirm-before "kill-server"
+bind \ confirm-before "kill-server"
 
 # kill K k
 unbind K
@@ -97,8 +92,7 @@ bind l refresh-client
 
 # split -v |
 unbind |
-#bind | split-window
-bind % split-window -h 
+bind | split-window
 unbind S
 bind S split-window
 
@@ -107,36 +101,8 @@ unbind Tab
 bind Tab select-pane -t:.+
 unbind BTab
 bind BTab select-pane -t:.-
-unbind F1
-unbind F2
-
-#bind-key -n F1 select-pane -L
-#bind-key -n F2 select-pane -R
-unbind Escape
-unbind F9
-unbind F10
-
-#bind-key -n F9 select-pane -t:.-
-#bind-key -n F10 select-pane -t:.+
-bind -n C-H select-pane -t :.-
-bind -n C-l select-pane -t :.+
 
 # " windowlist -b
 unbind '"'
 bind '"' choose-window
 
-# copy mode start F11-y
-# copy mode end   F11-p
-setw -g mode-keys vi
-bind y copy-mode
-# vでマーク開始 (vi like)
-bind -t vi-copy v begin-selection
-# yでヤンク
-bind -t vi-copy y copy-selection
-bind -t vi-copy V rectangle-toggle
-bind p paste-buffer
-
-# buffer
-#bind Space choose-buffer
-
-#set-option -g pane-active-border-fg blue
