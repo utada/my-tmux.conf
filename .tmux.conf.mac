@@ -1,0 +1,131 @@
+# Set the prefix to F11.
+#unbind-key -a
+#unbind C-b
+#unbind F11
+#unbind F12
+set -g prefix F11
+#set -g prefix fn-Cmd-F9
+#set -g prefix C-b
+#bind F11 send-prefix
+
+#unbind l
+bind L source ~/.tmux.conf
+
+# Bind appropriate commands similar to screen.
+# lockscreen ^X x
+unbind ^X
+bind ^X lock-server
+unbind x
+bind x lock-server
+
+# screen ^C c
+unbind ^C
+bind ^C new-window
+unbind c
+bind c new-window
+
+# detach
+unbind ^D
+unbind F6
+bind ^D detach
+#bind -n F6 detach
+
+# displays *
+unbind *
+bind * list-clients
+
+# next ^@ ^N sp n
+unbind ^@
+bind ^@ next-window
+unbind ^N
+bind ^N next-window
+unbind " "
+bind " " next-window
+unbind n
+bind n next-window
+
+# title A
+unbind A
+bind A command-prompt "rename-window %%"
+
+# other ^A
+unbind ^A
+bind ^A last-window
+
+# prev ^H ^P p ^?
+unbind ^H
+bind ^H previous-window
+unbind ^P
+bind ^P previous-window
+unbind p
+bind p previous-window
+unbind BSpace
+bind BSpace previous-window
+
+# windows ^W w
+unbind ^W
+bind ^W list-windows
+unbind w
+bind w list-windows
+
+# quit \
+unbind \
+Bind \ confirm-before "kill-server"
+
+# kill K k
+unbind K
+bind K confirm-before "kill-window"
+unbind k
+bind k confirm-before "kill-window"
+
+# redisplay ^L l
+unbind ^L
+bind ^L refresh-client
+unbind l
+bind l refresh-client
+
+# split -v |
+unbind |
+#bind | split-window
+bind % split-window -h 
+unbind S
+bind S split-window
+
+# :kB: focus up
+unbind Tab
+bind Tab select-pane -t:.+
+unbind BTab
+bind BTab select-pane -t:.-
+unbind F1
+unbind F2
+
+#bind-key -n F1 select-pane -L
+#bind-key -n F2 select-pane -R
+unbind Escape
+unbind F9
+unbind F10
+
+#bind-key -n F9 select-pane -t:.-
+#bind-key -n F10 select-pane -t:.+
+bind -n C-H select-pane -t :.-
+bind -n C-l select-pane -t :.+
+
+# " windowlist -b
+unbind '"'
+bind '"' choose-window
+
+# copy mode start F11-y
+# copy mode end   F11-p
+setw -g mode-keys vi
+bind y copy-mode
+# vでマーク開始 (vi like)
+bind -t vi-copy v begin-selection
+# yでヤンク
+bind -t vi-copy y copy-selection
+bind -t vi-copy V rectangle-toggle
+bind p paste-buffer
+
+# buffer
+#bind Space choose-buffer
+
+#set-option -g pane-active-border-fg blue
