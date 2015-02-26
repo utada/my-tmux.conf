@@ -1,13 +1,7 @@
 # Set the prefix to F12.
 unbind C-b
 set -g prefix F12
-#bind a send-prefix
-#
-#unbind F9
-#unbind F10
-#unbind F11
 
-#unbind l
 bind L source ~/.tmux.conf2
 
 # Bind appropriate commands similar to screen.
