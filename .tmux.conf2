@@ -1,6 +1,6 @@
-# Set the prefix to F12.
+# Set the prefix to F10.
 unbind C-b
-set -g prefix F12
+set -g prefix F10
 
 bind L source ~/.tmux.conf2
 
