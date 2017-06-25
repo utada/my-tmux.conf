@@ -6,7 +6,7 @@ set -g escape-time 10
 # send the prefix to client inside window
 bind -n F12 send-prefix
 
-#unbind l
+# reload config
 bind L source ~/.tmux.conf
 
 # Bind appropriate commands similar to screen.
@@ -22,41 +22,23 @@ bind ^C new-window
 unbind c
 bind c new-window
 
-# detach
-unbind ^D
-unbind F6
-bind ^D detach
-#bind -n F6 detach
-
 # displays *
 unbind *
 bind * list-clients
 
-# next ^@ ^N sp n
-unbind ^@
-bind ^@ next-window
-unbind ^N
-bind ^N next-window
 unbind " "
 bind " " next-window
-unbind n
-bind n next-window
+# unbind n
+# bind n next-window
 
 # title A
-# unbind A
-# bind A command-prompt "rename-window %%"
+unbind A
+bind A command-prompt "rename-window %%"
 
 # other ^A
 unbind ^A
 bind ^A last-window
 
-# prev ^H ^P p ^?
-unbind ^H
-bind ^H previous-window
-unbind ^P
-bind ^P previous-window
-unbind p
-bind p previous-window
 unbind BSpace
 bind BSpace previous-window
 
@@ -104,29 +86,26 @@ unbind F10
 bind -n C-H select-pane -t :.-
 bind -n C-l select-pane -t :.+
 
-# " windowlist -b
-unbind '"'
-bind '"' choose-window
-
-## copy mode
+# vi copy mode
 setw -g mode-keys vi
+unbind p
 bind y copy-mode
-bind -t vi-copy v begin-selection
-bind -t vi-copy y copy-selection # yank by y
-bind -t vi-copy V rectangle-toggle
-bind p paste-buffer
-#bind -t vi-copy y copy-pipe "xclip -sel clip -i"
-bind -t vi-copy y copy-pipe "DISPLAY=:0 xclip -sel clip"
-
 # copy mode on osx
-if-shell 'test "$(uname)" = "Darwin"' 'bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"'
+if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"'
+if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send -X copy-pipe "reattach-to-user-namespace pbcopy"'
+
 # copy mode on cygwin
 if-shell 'test "$(uname -o)" = "Cygwin"' 'bind -t vi-copy y copy-pipe "cat >/dev/clipboard"'
 
-# area select
-unbind -t vi-copy v
-bind -t vi-copy v begin-selection
+bind p paste-buffer
 
 # status-line
 set-option -g allow-rename off
 set-option -g status-right ""
+
+# 幅を等しくする
+unbind M-1
+bind C-1 select-layout even-horizontal
+# 高さを等しくする
+bind C-2 select-layout even-vertical
+
