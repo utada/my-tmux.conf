@@ -1,3 +1,4 @@
+
 # Set the prefix to F11.
 unbind C-b
 set -g prefix F11
@@ -87,12 +88,12 @@ bind -n C-H select-pane -t :.-
 bind -n C-l select-pane -t :.+
 
 # vi copy mode
-setw -g mode-keys vi
-unbind p
+#setw -g mode-keys vi
+unbind y
 bind y copy-mode
 # copy mode on osx
-if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"'
-if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send -X copy-pipe "reattach-to-user-namespace pbcopy"'
+if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi v send -X begin-selection'
+if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"'
 
 # copy mode on cygwin
 if-shell 'test "$(uname -o)" = "Cygwin"' 'bind -t vi-copy y copy-pipe "cat >/dev/clipboard"'
@@ -103,8 +104,6 @@ bind p paste-buffer
 set-option -g allow-rename off
 set-option -g status-right ""
 
-#unbind M-1
-#bind C-1 select-layout even-horizontal
-#bind M-1 select-layout even-horizontal
-#bind C-2 select-layout even-vertical
-
+# layout
+bind H select-layout even-horizontal
+bind V select-layout even-vertical
