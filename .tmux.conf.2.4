@@ -95,8 +95,12 @@ bind y copy-mode
 if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi v send -X begin-selection'
 if-shell 'test "$(uname)" = "Darwin"' 'bind -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"'
 
+# copy mode on wsltty
+if-shell 'test "$(uname)" = "Linux"'  'bind -T copy-mode-vi v send -X begin-selection'
+if-shell 'test "$(uname)" = "Linux"'  'bind -T copy-mode-vi y send -X copy-pipe-and-cancel "clip.exe"'
+
 # copy mode on cygwin
-if-shell 'test "$(uname -o)" = "Cygwin"' 'bind -t vi-copy y copy-pipe "cat >/dev/clipboard"'
+# if-shell 'test "$(uname -o)" = "Cygwin"' 'bind -t vi-copy y copy-pipe "cat >/dev/clipboard"'
 
 bind p paste-buffer
 
